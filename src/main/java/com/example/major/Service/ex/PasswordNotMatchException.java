@@ -1,24 +1,24 @@
 package com.example.major.Service.ex;
 
-public class UserNoFoundException extends ServiceException{
+public class PasswordNotMatchException extends ServiceException{
 
-    public UserNoFoundException() {
+    public PasswordNotMatchException() {
         super();
     }
 
-    public UserNoFoundException(String message) {
+    public PasswordNotMatchException(String message) {
         super(message);
     }
 
-    public UserNoFoundException(String message, Throwable cause) {
+    public PasswordNotMatchException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public UserNoFoundException(Throwable cause) {
+    public PasswordNotMatchException(Throwable cause) {
         super(cause);
     }
 
-    public UserNoFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public PasswordNotMatchException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

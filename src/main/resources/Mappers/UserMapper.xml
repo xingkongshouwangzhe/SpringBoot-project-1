@@ -38,11 +38,12 @@
         keyProperty属性：表示将表中的那个字段作为主键进行递增
     -->
     <insert id="UserInsert" useGeneratedKeys="true" keyProperty="uid">
-        insert into wx_user (
-            uid, username, password, phone, state, create_user, create_time
-        ) values (
-            #{uid}, '#{username}', '#{password}', '#{phone}', '#{state}', '#{create_user}', #{create_time}
-        )
+        insert into wx_user (uid, username, password, phone, state, create_user, create_time)
+        VALUES (#{uid}, #{username}, #{password}, #{phone}, #{state}, #{createUser}, #{createTime})
     </insert>
+
+    <select id="SelctUser" resultMap="UserEntityMap">
+        select * from wx_user
+    </select>
 
 </mapper>

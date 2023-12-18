@@ -1,8 +1,8 @@
-package com.example.springbootproject1.Mapper;
+package com.example.major.Mapper;
 
-import com.example.springbootproject1.Entity.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
+import com.example.major.Entity.User;
+
+import java.util.List;
 
 /**
  * 用户模块的持久层接口
@@ -29,8 +29,10 @@ public interface UserMapper {
 
     /*
     @Insert("insert into wx_user (uid, username, password, phone, state, create_user, create_time) values " +
-    "(#{uid}, #{username}, #{password}, #{phone}, #{state}, #{create_user}, #{create_time})")
+    "(#{uid}, '#{username}', '#{password}', '#{phone}', '#{state}', '#{create_user}', #{create_time})")
      */
     Integer UserInsert(User user);
+
+    List<User> SelctUser();
 
 }

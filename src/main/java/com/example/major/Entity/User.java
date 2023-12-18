@@ -1,4 +1,4 @@
-package com.example.springbootproject1.Entity;
+package com.example.major.Entity;
 
 import java.io.Serializable;
 

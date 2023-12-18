@@ -1,6 +1,5 @@
-package com.example.springbootproject1;
+package com.example.major;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 在项目启动的时候会自动加载所有的接口文件
  * @MapperScan("接口文件的路径")
  */
-@MapperScan("com.example.springbootproject1.Mapper")
+@MapperScan("com.example.major.Mapper")
 public class SpringBootProject1Application {
 
     public static void main(String[] args) {
