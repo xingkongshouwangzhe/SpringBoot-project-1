@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性：用于指定当前映射文和那个接口精选映射，需要指定接口的文件路径，需要标注包的完整路径接口-->
+<mapper namespace="com.example.major.Mapper.UserMapper">
+
+    <!-- 自定义映射规则：resultMap标签来完成映射规则的定义
+        id属性：表示给这个映射负责分配一个唯一的id值，对应的就是resultMap=“id属性的值”的属性的取值
+        type属性：取值是一个类，表示的是数据库中查询结果与java中那个实体类进行结果集的映射
+    -->
+    <resultMap id="UserEntityMap" type="com.example.major.Entity.User">
+        <!-- 将表的资源和类的属性不一致的字段进行匹配指定，名称一致的字段可以省略不写-->
+        <!-- 在定义映射规则是主键是不可省略的（不管是否一致）
+            配合完成名称不一致地映射：
+            column属性：表示表的资源名称（字段名）
+            property属性：表示类的属性名称
+        -->
+        <result column="uid" property="uid"></result>
+        <result column="create_user" property="createUser"></result>
+        <result column="create_time" property="createTime"></result>
+    </resultMap>
+
+    <!--select语句在执行的时候，查询的结果是一个对象、多个对象-->
+    <!--
+        id属性：表示映射的接口方法的名称，直接在标签的内部来编写SQL语句
+        resultType属性(当表的字段和类的对象属性的字段一致时)：表示查询结果集类型，只需要指定对应的映射类的类型，并且包含完整包的接口；
+        resultType="com.example.major.Entity.User"
+        resultMap属性：表示当表的字段和类的对象属性的字段名称不一致时，来自定义查询结果集的映射规则
+    -->
+    <select id="FindByUsername" resultMap="UserEntityMap">
+        select * from wx_user where username=#{username}
+    </select>
+
+    <!--
+        id属性：表示映射的接口方法的名称，直接在标签的内部来编写SQL语句
+        useGeneratedKeys属性：表示开启某个字段的值递增（主键设置为递增）
+        keyProperty属性：表示将表中的那个字段作为主键进行递增
+    -->
+    <insert id="UserInsert" useGeneratedKeys="true" keyProperty="uid">
+        insert into wx_user (
+            uid, username, password, phone, state, create_user, create_time
+        ) values (
+            #{uid}, '#{username}', '#{password}', '#{phone}', '#{state}', '#{create_user}', #{create_time}
+        )
+    </insert>
+
+</mapper>
